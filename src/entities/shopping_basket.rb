@@ -2,6 +2,7 @@ require_relative 'item'
 require_relative '../services/checkout_calculator'
 
 module Entities
+  # This entity holds the core app logic, storing all entry items and their calculations used to print both the input and output.
   class ShoppingBasket
     def initialize
       @basket = {

@@ -2,6 +2,7 @@ require 'json'
 require_relative '../entities/shopping_basket'
 
 module Helpers
+  # This helper works as a simple file parser, consuming information stored in JSON and parsing to a plain Ruby hash.
   class Parser
     def self.parse_file(file_name:)
       File.foreach(file_name) do |line|

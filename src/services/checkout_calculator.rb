@@ -1,6 +1,7 @@
 require_relative 'tax_calculator'
 
 module Services
+  # This class computes the final price for each product and taxes involved in the checkout.
   class CheckoutCalculator
     def self.call(item)
       tax = TaxCalculator.calculate(item)

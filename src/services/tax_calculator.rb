@@ -1,4 +1,5 @@
 module Services
+  # This class holds all Tax logic and calculations associated to each product type.
   class TaxCalculator
     SALES_TAX = 0.10 # 10 / 100
     IMPORT_TAX = 0.05 # 5 / 100

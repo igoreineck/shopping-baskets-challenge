@@ -1,4 +1,5 @@
 module Entities
+  # This entity holds the item attributes
   class Item
     def initialize(attributes)
       @name = attributes["item-name"]
