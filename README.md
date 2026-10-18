@@ -52,7 +52,7 @@ This program requires a file in order to work as expected. There are a few files
 ruby src/main.rb -f input_examples/case_1.txt
 ```
 
-After executing, it shows the input entries given and the excepted output with all calculations applied.
+After executing, it shows the input entries given and the expected output with all calculations applied.
 
 ```txt
 Input
