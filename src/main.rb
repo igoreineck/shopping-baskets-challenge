@@ -1,6 +1,6 @@
 require 'optparse'
 require 'pry'
-require_relative 'src/parser'
+require_relative 'services/parser'
 
 options = {}
 OptionParser.new do |opts|
@@ -16,4 +16,4 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-Parser.parse_file(file_name: options[:file]) if options.key?(:file) # I may adjust this to accept directly a file instead of a list
+Services::Parser.parse_file(file_name: options[:file]) if options.key?(:file)
