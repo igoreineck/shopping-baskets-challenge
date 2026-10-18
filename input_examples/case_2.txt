@@ -1,0 +1,1 @@
+[{ "item-name": "box of chocolates", "item-type": "food", "quantity": 1, "imported": true, "unit-price": 10.00 }, { "item-name": "bottle of perfume", "item-type": "personal-care", "quantity": 1, "imported": true, "unit-price": 47.50 }]

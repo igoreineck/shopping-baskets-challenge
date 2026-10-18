@@ -4,23 +4,21 @@ require_relative 'tax_calculator'
 module Services
   class ShoppingBasket
     def initialize
-      @entries = []
-      @sales_taxes = 0.0
-      @amount = 0.0
+      @basket = {
+        entries: [],
+        taxes: 0.0,
+        total: 0.0
+      }
     end
 
-    def add_entry(entry_attributes)
-      @entries << { item: Entities::Item.new(entry_attributes) }
-    end
-
-    def add_entries(entries: [])
-      entries.map { |entry_attributes| add_entry(entry_attributes) }
+    def add_entries(entries:)
+      entries.each do |entry|
+        @basket[:entries] << { item: Entities::Item.new(entry) }
+      end
     end
 
     def process_checkout
-      calculate_items
       calculate_taxes
-      calculate_total
     end
 
     def print
@@ -30,23 +28,20 @@ module Services
 
     private
 
-    def calculate_items
-      @entries.each { |entry| entry[:tax], entry[:total] = TaxCalculator.calculate(entry[:item]) }
-    end
-
     def calculate_taxes
-      @sales_taxes = @entries.sum { |entry| entry[:tax] }
-    end
+      @basket[:entries].each do |entry|
+        entry[:tax], entry[:total] = TaxCalculator.calculate(entry[:item])
 
-    def calculate_total
-      @amount = @entries.sum { |entry| entry[:total] }
+        @basket[:taxes] += entry[:tax]
+        @basket[:total] += entry[:total]
+      end
     end
 
     def display_input
       puts "Input"
       puts "------"
 
-      @entries.each do |entry|
+      @basket[:entries].each do |entry|
         puts "#{entry[:item].quantity} #{entry[:item].imported? ? 'imported' : ''} #{entry[:item].name} at #{entry[:item].unit_price}"
       end
     end
@@ -55,12 +50,12 @@ module Services
       puts "\nOutput"
       puts "------"
 
-      @entries.each do |entry|
-        puts "#{entry[:item].quantity} #{entry[:item].name}: #{entry[:total].round(2)}"
+      @basket[:entries].each do |entry|
+        puts "#{entry[:item].quantity} #{entry[:item].imported? ? 'imported' : ''} #{entry[:item].name}: #{entry[:total].round(2)}"
       end
 
-      puts "Sales Taxes: #{@sales_taxes.round(2)}"
-      puts "Total: #{@amount.round(2)}"
+      puts "Sales Taxes: #{@basket[:taxes].round(2)}"
+      puts "Total: #{@basket[:total].round(2)}"
     end
   end
 end

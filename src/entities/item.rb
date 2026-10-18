@@ -13,10 +13,5 @@ module Entities
     def imported?
       @imported
     end
-
-    def price
-      @quantity * @unit_price
-    end
   end
-
 end
