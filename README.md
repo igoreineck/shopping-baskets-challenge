@@ -10,8 +10,6 @@ The tax calculation follows a few requirements:
 **Rounding rules**
 The rounding rules for sales tax are that for a tax rate of n%, a shelf price of p contains (np/100 rounded up to the nearest 0.05) amount of sales tax.
 
----
-
 ## Technical Decisions
 
 It was built using Ruby version **3.4.11** purely with no external libraries except [pry](https://github.com/pry/pry) used for debugging at runtime and [rspec](https://github.com/rspec/rspec) for writing tests.
@@ -22,8 +20,6 @@ Some tools included in the Ruby standard library were used, such as:
 - `optparse`: used to handle command line arguments.
 
 All the other entities, services and helpers are custom made entirely in _PORO_ (Plain Old Ruby Object).
-
----
 
 ## How to execute
 
@@ -68,14 +64,18 @@ Sales Taxes: 1.5
 Total: 42.32
 ```
 
----
+Other examples can be executed as well:
+
+```bash
+ruby src/main.rb -f input_examples/case_2.txt
+ruby src/main.rb -f input_examples/case_3.txt
+```
 
 ## Tests
 
-This command can be used for test execution:
+This command can be used for test execution and it runs all specs:
 
 ```bash
-# Runs for all spec files
 rspec
 ```
 
