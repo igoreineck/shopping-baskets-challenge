@@ -1,1 +1,1 @@
-[{ "item-name": "box of chocolate Nestlé", "item-type": "food", "quantity": 2, "imported": true, "unit_price": 10.00 }]
+[{ "item-name": "Book", "item-type": "book", "quantity": 2, "imported": false, "unit-price": 12.49 }, { "item-name": "music CD", "item-type": "music", "quantity": 1, "imported": false, "unit-price": 14.99 }, { "item-name": "chocolate bar", "item-type": "food", "quantity": 1, "imported": false, "unit-price": 0.85 }]
