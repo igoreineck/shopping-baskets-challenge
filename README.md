@@ -34,7 +34,13 @@ rbenv install 3.4.11
 rbenv local 3.4.11
 ```
 
-Then it can be executed with:
+Then run the bundle installer to install the gems:
+
+```bash
+bundle install
+```
+
+After that, the project can be executed with:
 
 ```bash
 ruby src/main.rb -h
