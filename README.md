@@ -1,4 +1,4 @@
-# shopping-baskets-challenge
+# Shopping Baskets Challenge
 
 This is a small CLI application that represents a simple shopping basket for all kinds of products, with tax calculation applied at the checkout.
 
