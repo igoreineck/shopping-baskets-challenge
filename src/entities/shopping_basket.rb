@@ -1,7 +1,7 @@
-require_relative '../entities/item'
-require_relative 'tax_calculator'
+require_relative 'item'
+require_relative '../services/checkout_calculator'
 
-module Services
+module Entities
   class ShoppingBasket
     def initialize
       @basket = {
@@ -11,9 +11,11 @@ module Services
       }
     end
 
+    attr_reader :basket
+
     def add_entries(entries:)
       entries.each do |entry|
-        @basket[:entries] << { item: Entities::Item.new(entry) }
+        @basket[:entries] << { item: Item.new(entry) }
       end
     end
 
@@ -29,8 +31,10 @@ module Services
     private
 
     def calculate_taxes
+      return if @basket[:entries].empty?
+
       @basket[:entries].each do |entry|
-        entry[:tax], entry[:total] = TaxCalculator.calculate(entry[:item])
+        entry[:tax], entry[:total] = Services::CheckoutCalculator.call(entry[:item])
 
         @basket[:taxes] += entry[:tax]
         @basket[:total] += entry[:total]

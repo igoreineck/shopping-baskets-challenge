@@ -1,12 +1,12 @@
 require 'optparse'
 require 'pry'
-require_relative 'services/parser'
+require_relative 'helpers/parser'
 
 options = {}
 OptionParser.new do |opts|
   opts.banner = "Usage: main.rb [options]"
 
-  opts.on("--FILE", "--file=FILE", "Input the file name") do |file|
+  opts.on("--FILE", "--file=FILE", "Input a file path") do |file|
     options[:file] = file
   end
 
@@ -16,4 +16,4 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-Services::Parser.parse_file(file_name: options[:file]) if options.key?(:file)
+Helpers::Parser.parse_file(file_name: options[:file]) if options.key?(:file)

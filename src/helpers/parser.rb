@@ -1,11 +1,11 @@
 require 'json'
-require_relative 'shopping_basket'
+require_relative '../entities/shopping_basket'
 
-module Services
+module Helpers
   class Parser
     def self.parse_file(file_name:)
       File.foreach(file_name) do |line|
-        basket = ShoppingBasket.new
+        basket = Entities::ShoppingBasket.new
         basket.add_entries(entries: JSON.parse(line.strip))
         basket.process_checkout
         basket.print

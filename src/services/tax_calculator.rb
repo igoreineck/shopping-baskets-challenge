@@ -8,10 +8,8 @@ module Services
 
     def self.calculate(item)
       tax_rate = calculate_tax_rate(item.type, item.imported)
-      tax = round_tax(item.unit_price * tax_rate)
-      total = calculate_total(item.unit_price, tax, item.quantity)
 
-      [tax * item.quantity, total]
+      round_tax(item.unit_price * tax_rate)
     end
 
     private
@@ -25,10 +23,6 @@ module Services
 
     def self.round_tax(tax)
       (tax * ROUNDING_FACTOR).ceil / ROUNDING_FACTOR
-    end
-
-    def self.calculate_total(unit_price, tax, quantity)
-      (unit_price + tax) * quantity
     end
   end
 end
